@@ -1,0 +1,31 @@
+{
+  "name": "crud-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha tests/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mereb-Tech/node-crud-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mereb-Tech/node-crud-challenge/issues"
+  },
+  "homepage": "https://github.com/Mereb-Tech/node-crud-challenge#readme",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "mocha": "^10.0.0",
+    "uuid": "^8.3.2"
+  }
+}
