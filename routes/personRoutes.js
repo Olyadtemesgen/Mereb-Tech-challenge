@@ -1,19 +1,22 @@
-import express from "express";
+const express = require("express");
 
+const personController = require('../controllers/personController')
 const personRouter = express.Router();
 
-personRouter.get('/', getAllPerson);
+personRouter.get('/', personController.getAllPerson);
 
-personRouter.get('/:personId', getOnePerson);
+personRouter.get('/:personId', personController.getOnePerson);
 
-personRouter.post('person', addPerson);
+personRouter.post('/', personController.addPerson);
 
-personRouter.put('/:personId', editPerson);
+personRouter.put('/:personId', personController.updatePerson);
 
-personRouter.delete(':/personId', deleteOnePerson);
+personRouter.delete('/:personId', personController.deleteOnePerson);
 
-personRouter.delete('/', deleteAllPerson);
+personRouter.delete('/', personController.deleteAllPerson);
 
-personRouter.use((req, res) =>{
-    res.status(404).json({message: `${req.path} endpoint is not found`})
-})
+personRouter.use((req, res) => {
+    res.status(404).json({ message: `${req.path} endpoint is not found` });
+});
+
+module.exports = personRouter;

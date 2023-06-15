@@ -1,5 +1,9 @@
 const express = require('express')
+const cors = require('cors')
+const bodyParser = require("body-parser")
 const app = express()
+
+app.use(bodyParser.json({ extended: false }));
 
 let persons = [{
     id: '1',
@@ -8,20 +12,20 @@ let persons = [{
     hobbies: []
 }] //This is your in memory database
 
+app.use(cors());
 app.set('db', persons)
 //TODO: Implement crud of person
 
-const personService = require('./services/personService')(persons);
-const personController = require('./controllers/personController')(personService);
 const personRoutes = require('./routes/personRoutes');
+
+app.use("/person",personRoutes);
 
 app.use((req, res) => {
     res.status(404).json({message: `${req.path} endpoint is not found"`})
 })
 
-app.use('/person', personRoutes);
-
 if (require.main === module) {
-    app.listen(3000)
+    app.listen(3000, () => {
+        console.log(`Server is running on server port 3000`);})
 }
 module.exports = app;
