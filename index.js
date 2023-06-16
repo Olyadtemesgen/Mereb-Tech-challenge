@@ -24,6 +24,11 @@ app.use((req, res) => {
     res.status(404).json({message: `${req.path} endpoint is not found"`})
 })
 
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({error: 'Internal server error'});
+  });
+
 if (require.main === module) {
     app.listen(3000, () => {
         console.log(`Server is running on server port 3000`);})
